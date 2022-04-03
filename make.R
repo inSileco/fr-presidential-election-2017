@@ -24,6 +24,7 @@ devtools::load_all(here::here())
 year <- 2017
 
 
-## Run project ----
+## Add results to spatial layers ----
 
-# source(here::here("analyses", "script_X.R"))
+add_data_to_shp(year, round = 1)
+add_data_to_shp(year, round = 2)
