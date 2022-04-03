@@ -19,20 +19,12 @@
 
 read_candidates_info <- function(year) {
   
-  if (length(year) != 1) {
-    stop("Argument 'year' must of length 1")
-  }
-  
-  year <- as.character(year)
-  
-  if (nchar(year) != 4) {
-    stop("Argument 'year' must be of the form YYYY")
-  }
+  check_year(year)
   
   path <- here::here("data", year, paste0("candidates_info_", year, ".csv"))
   
   if (!file.exists(path)) {
-    stop("Unable to find 'candidates_info' for year ", year)
+    stop("Unable to find candidates info file for year ", year)
   }
                      
   utils::read.csv(path)
