@@ -41,7 +41,7 @@ read_election_results <- function(year, round) {
   
   
   tab <- readxl::read_excel(path  = path, 
-                            sheet = paste("Départements Tour", round),
+                            sheet = paste("D\u00e9partements Tour", round),
                             skip  = ifelse(round == 1, 0, 3),
                             progress = FALSE)
   tab <- as.data.frame(tab)
@@ -49,8 +49,8 @@ read_election_results <- function(year, round) {
   
   ## Select general columns ----
   
-  pattern <- paste0("département$|^Inscrits$|^Abstentions$|^Votants$|", 
-                    "^Blancs$|^Nuls$|^Exprimés$")
+  pattern <- paste0("d\u00e9partement$|^Inscrits$|^Abstentions$|^Votants$|", 
+                    "^Blancs$|^Nuls$|^Exprim\u00e9s$")
   
   dat <- tab[ , grep(pattern, colnames(tab))]
   colnames(dat) <- c("no_departement", "departement", "inscrits", "abstention", 
@@ -78,7 +78,7 @@ read_election_results <- function(year, round) {
   ## Check candidate names ----
   
   tab$"name" <- tolower(gsub("-| ", "", tab$"name"))
-  tab$"name" <- tolower(gsub("é", "e",  tab$"name"))
+  tab$"name" <- tolower(gsub("\u00e9", "e",  tab$"name"))
   
   candidates <- sort(unique(tab$"name"))
   
