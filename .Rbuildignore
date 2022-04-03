@@ -1,2 +1,7 @@
 ^LICENSE\.md$
 ^data$
+^figures$
+^outputs$
+^.*\.Rproj$
+^\.Rproj\.user$
+^make\.R$
