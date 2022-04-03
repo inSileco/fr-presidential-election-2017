@@ -20,5 +20,6 @@ RoxygenNote: 7.1.2
 Imports:
     devtools,
     here,
+    magrittr,
     readxl,
     utils
