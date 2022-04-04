@@ -10,8 +10,13 @@ mapping votes cast and abstention for the French presidential election of 2017 a
 the department level (metropolis and overseas departments).
 
 The website was built with the software [**R**](https://www.r-project.org/) and 
-the packages [`leaflet`](https://rstudio.github.io/leaflet/) and 
-[`highcharter`](https://jkunst.com/highcharter/).
+the packages 
+[`leaflet`](https://rstudio.github.io/leaflet/),
+[`highcharter`](https://jkunst.com/highcharter/),
+[`htmltools`](https://rstudio.github.io/htmltools/),
+[`htmlwidgets`](https://www.htmlwidgets.org/),
+[`leafem`](https://github.com/r-spatial/leafem), and
+[`leafpop`](https://github.com/r-spatial/leafpop).
 
 
 
