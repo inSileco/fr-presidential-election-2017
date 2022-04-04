@@ -3,7 +3,7 @@
 #' @param year The election year in the form of YYYY.
 #'
 #' @return No return values. Barplots (HTML code) are exported in 
-#'   `figures/barplots/`.
+#'   `content/barplots/`.
 #'   
 #' @export
 #'
@@ -16,6 +16,10 @@ make_tooltip_barplot <- function(year) {
   
   check_year(year)
   
+  dir.create(here::here("content", "barplots", "libs"), recursive = TRUE, 
+             showWarnings = FALSE)
+  
+  
   ## Get candidates list ----
   
   infos <- read_candidates_info(year)
@@ -26,8 +30,8 @@ make_tooltip_barplot <- function(year) {
   
   ## Import spatial results ----
   
-  shp <- readRDS(here::here("outputs", paste0("election_results_", year, 
-                                              "_round_1.rds")))
+  shp <- readRDS(here::here("data", "derived-data", 
+                            paste0("election_results_", year, "_round_1.rds")))
   
   shp <- shp[order(shp@data$"code"), ]
   
@@ -92,7 +96,7 @@ make_tooltip_barplot <- function(year) {
     filename <- paste0("barplot_", filename, ".html")
     
     htmlwidgets::saveWidget(widget = ttips[[j]], 
-                            file = here::here("figures", "barplots", filename), 
+                            file = here::here("content", "barplots", filename), 
                             selfcontained = FALSE)
     
     
@@ -102,25 +106,25 @@ make_tooltip_barplot <- function(year) {
     
     if (j == 1) {
       
-      invisible(file.copy(here::here("figures", "barplots", dirname, "/"), 
-                          here::here("figures", "barplots", "libs"), 
+      invisible(file.copy(here::here("content", "barplots", dirname, "/"), 
+                          here::here("content", "barplots", "libs"), 
                           recursive = TRUE))
     }
     
     
     ## Delete JS libs ----
     
-    unlink(here::here("figures", "barplots", dirname), recursive = TRUE)
+    unlink(here::here("content", "barplots", dirname), recursive = TRUE)
     
     
     ## Correct path to JS libs ----
     
-    html <- readLines(here::here("figures", "barplots", filename))
+    html <- readLines(here::here("content", "barplots", filename))
     html <- gsub(dirname, "libs", html)
     html <- gsub('"padding":15|"padding":40', '"padding":5', html)
     
     cat(paste0(html, collapse = '\n'), 
-        file = here::here("figures", "barplots", filename))
+        file = here::here("content", "barplots", filename))
   }
   
   
@@ -128,7 +132,13 @@ make_tooltip_barplot <- function(year) {
   
   pop_up_graph <- leafpop::popupGraph(ttips, type = "html", 
                                       width = 750, height = 425)
-  saveRDS(pop_up_graph, here::here("outputs", "popup_barplots.rds"))
+  
+  listname <- tolower(shp@data[ , "code"])
+  listname <- gsub("fr-", "", listname)
+  names(pop_up_graph) <- listname
+  
+  saveRDS(pop_up_graph, here::here("data", "derived-data", 
+                                   "popup_barplots.rds"))
   
   invisible(NULL)
 }

@@ -11,7 +11,7 @@ make_tooltip_piechart(year)
 }
 \value{
 No return values. Piecharts (HTML code) are exported in
-\verb{figures/piecharts/}.
+\verb{content/piecharts/}.
 }
 \description{
 Create HTML Piecharts (Tooltip) pour second round of voting

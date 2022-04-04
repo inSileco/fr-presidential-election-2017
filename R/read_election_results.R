@@ -31,8 +31,9 @@ read_election_results <- function(year, round) {
   check_year(year)
   check_round(round)
   
-  path <- here::here("data", year, paste0("Presidentielle_", year, 
-                                          "_Resultats_Tour_", round, "_c.xls"))
+  path <- here::here("data", "raw-data", paste0("Presidentielle_", year, 
+                                                "_Resultats_Tour_", round, 
+                                                "_c.xls"))
   
   if (!file.exists(path)) {
     stop("Unable to find elections results file for year ", year, " and round ",

@@ -11,7 +11,7 @@ make_tooltip_barplot(year)
 }
 \value{
 No return values. Barplots (HTML code) are exported in
-\verb{figures/barplots/}.
+\verb{content/barplots/}.
 }
 \description{
 Create HTML Barplots (Tooltip) pour first round of voting

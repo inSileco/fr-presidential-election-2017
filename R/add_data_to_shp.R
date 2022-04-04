@@ -29,7 +29,8 @@ add_data_to_shp <- function(year, round) {
   
   ## Import department layer ----
   
-  shp <- readRDS(here::here("data", "shp-FRA_DOM-composite_lowres.rds"))
+  shp <- readRDS(here::here("data", "raw-data", 
+                            "shp-FRA_DOM-composite_lowres.rds"))
   dat <- data.frame(shp@data)
   
   
@@ -101,8 +102,9 @@ add_data_to_shp <- function(year, round) {
   
   ## Export shapefile ----
   
-  saveRDS(shp, here::here("outputs", paste0("election_results_", year, 
-                                            "_round_", round, ".rds")))
+  saveRDS(shp, here::here("data", "derived-data", paste0("election_results_", 
+                                                         year, "_round_", round,
+                                                         ".rds")))
   
   invisible(shp)
 }

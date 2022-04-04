@@ -2,8 +2,9 @@
 ^renv\.lock$
 ^LICENSE\.md$
 ^data$
-^figures$
-^outputs$
+^content$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^make\.R$
+^bower\.json$
+^index\.html$

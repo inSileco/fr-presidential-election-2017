@@ -21,7 +21,8 @@ read_candidates_info <- function(year) {
   
   check_year(year)
   
-  path <- here::here("data", year, paste0("candidates_info_", year, ".csv"))
+  path <- here::here("data", "raw-data", paste0("candidates_info_", year, 
+                                                ".csv"))
   
   if (!file.exists(path)) {
     stop("Unable to find candidates info file for year ", year)
