@@ -1,15 +1,15 @@
-#' Results of French Presidential Election
+#' Results of French Presidential Election 2017
 #' 
-#' @description 
-#' __ADD DESCRIPTION__
-#' 
-#' @author Nicolas Casajus \email{nicolas.casajus@gmail.com}
+#' @author 
+#'   - Nicolas Casajus \email{nicolas.casajus@@gmail.com}
+#'   - Kevin Cazelles \email{kevin.cazelles@@gmail.com}
+#'   - Steve Vissault \email{s.vissault@@yahoo.fr}
 #' 
 #' @date 2022/04/03
 
 
 
-## Install dependencies (listed in DESCRIPTION) ----
+## Install dependencies (listed in renv.lock) ----
 
 renv::restore()
 
@@ -24,7 +24,7 @@ devtools::load_all(here::here())
 year <- 2017
 
 
-## Add results to French departments geometry ----
+## Add election results to French departments geometry ----
 
 add_data_to_shp(year, round = 1)
 add_data_to_shp(year, round = 2)
@@ -38,3 +38,8 @@ make_tooltip_barplot(year)
 ## Create tooltips - Piecharts for 2nd round ----
 
 make_tooltip_piechart(year)
+
+
+## Create Web page ----
+
+create_html_content(year)
