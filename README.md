@@ -19,15 +19,24 @@ the packages [`leaflet`](https://rstudio.github.io/leaflet/) and
 
 
 
-All raw data are stored in 
+All original data are stored in 
 [`data/raw-data`](https://github.com/inSileco/fr-presidential-election-2017/tree/main/data/raw-data)
 and are organized as follow:
 
-- `Presidentielle_2017_Resultats_Tour_1_c.xls`: ...
-- `Presidentielle_2017_Resultats_Tour_2_c.xls`: ...
-- `candidates_info_2017.csv`: ...
-- `shp-FRA_DOM-composite.rds`: ...
-- `shp-FRA_DOM-composite_lowres.rds`: ...
+- `Presidentielle_2017_Resultats_Tour_1_c.xls`: dataset released by the 
+**French Government** with results of the first round of voting at the Department level 
+([source](http://www.data.gouv.fr/fr/posts/les-donnees-des-elections/)).
+- `Presidentielle_2017_Resultats_Tour_2_c.xls`: dataset released by the 
+**French Government** with results of the second round of voting at the Department level 
+([source](http://www.data.gouv.fr/fr/posts/les-donnees-des-elections/)).
+- `candidates_info_2017.csv`: table with the name of candidates and their associated colors
+- `shp-FRA_DOM-composite.rds`: composite spatial layer 
+([`sp`](https://github.com/edzer/sp) polygons) of France and overseas departments. 
+Coordinates of overseas departments have been altered to be positioned at the bottom
+of France. This layer is derived from the version 2.8 of the 
+**Global Administrative Areas** ([GADM](http://www.gadm.org/version2)).
+- `shp-FRA_DOM-composite_lowres.rds`: same at the previous layer but with simplified
+geometries (low resolution of a better display).
 
 
 
