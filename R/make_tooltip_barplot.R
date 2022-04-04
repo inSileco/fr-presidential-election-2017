@@ -29,6 +29,8 @@ make_tooltip_barplot <- function(year) {
   shp <- readRDS(here::here("outputs", paste0("election_results_", year, 
                                               "_round_1.rds")))
   
+  shp <- shp[order(shp@data$"code"), ]
+  
 
   ttips <- list()
   

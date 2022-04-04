@@ -29,6 +29,8 @@ make_tooltip_piechart <- function(year) {
   shp <- readRDS(here::here("outputs", paste0("election_results_", year, 
                                               "_round_2.rds")))
   
+  shp <- shp[order(shp@data$"code"), ]
+  
   candidates <- candidates[candidates %in% colnames(shp@data)]
   
   
