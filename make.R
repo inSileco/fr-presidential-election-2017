@@ -11,7 +11,7 @@
 
 ## Install dependencies (listed in DESCRIPTION) ----
 
-devtools::install_deps(upgrade = "never")
+renv::restore()
 
 
 ## Load project addins (R functions and packages) ----
@@ -24,7 +24,17 @@ devtools::load_all(here::here())
 year <- 2017
 
 
-## Add results to spatial layers ----
+## Add results to French departments geometry ----
 
 add_data_to_shp(year, round = 1)
 add_data_to_shp(year, round = 2)
+
+
+## Create tooltips - Barplots for 1st round ----
+
+make_tooltip_barplot(year)
+
+
+## Create tooltips - Piecharts for 2nd round ----
+
+make_tooltip_piechart(year)

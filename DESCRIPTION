@@ -20,7 +20,9 @@ RoxygenNote: 7.1.2
 Imports:
     devtools,
     here,
-    highcharter,
+    highcharter (== 0.5.0),
+    htmlwidgets,
+    leafpop,
     magrittr,
     RColorBrewer,
     readxl,
